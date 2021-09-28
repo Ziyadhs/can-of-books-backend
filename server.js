@@ -6,6 +6,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 server.use(cors());
+server.use(express.json());
 
 const PORT = process.env.PORT;
 const MONGO_SERVER = process.env.MONGO_SERVER
@@ -18,7 +19,7 @@ const { getBookHandler, createBookHandler, deleteBookHandler,} = require("./modu
 server.get('/', homeRouteHandler);
 server.get('/getBook', getBookHandler);
 server.post('/createBook', createBookHandler);
-server.delete('/deleteBook/:id', deleteBookHandler);
+server.delete('/deleteBook', deleteBookHandler);
 server.get('*', notFoundHandler);
 
 // Function Handlers
