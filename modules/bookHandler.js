@@ -2,8 +2,10 @@
 
 const { bookModel } = require("./book");
 
+
 let getBookHandler = (req, res) => {
-    bookModel.find().then(data => {
+    let email1 = req.query.email;
+    bookModel.find({email:email1}).then(data => {
         res.json(data); 
     })
     .catch((error) => {
