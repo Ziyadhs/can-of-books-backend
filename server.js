@@ -13,13 +13,14 @@ const MONGO_SERVER = process.env.MONGO_SERVER
 
 mongoose.connect(`${MONGO_SERVER}`);
 
-const { getBookHandler, createBookHandler, deleteBookHandler,} = require("./modules/bookHandler");
+const { getBookHandler, createBookHandler, deleteBookHandler, UpdateBookHandler} = require("./modules/bookHandler");
 
 // Routes
 server.get('/', homeRouteHandler);
 server.get('/getBook', getBookHandler);
 server.post('/createBook', createBookHandler);
 server.delete('/deleteBook', deleteBookHandler);
+server.put('/updateBook', UpdateBookHandler);
 server.get('*', notFoundHandler);
 
 // Function Handlers
